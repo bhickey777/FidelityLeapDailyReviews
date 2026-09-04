@@ -1,0 +1,645 @@
+Started by user Admin
+Replayed #1
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/LeBron Pipeline@2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/aditya0774/LeMarketJames
+ > git init /var/lib/jenkins/workspace/LeBron Pipeline@2 # timeout=10
+Fetching upstream changes from https://github.com/aditya0774/LeMarketJames
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/aditya0774/LeMarketJames +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/aditya0774/LeMarketJames # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b0a273a826a2c1ac1e2062c11d9eee48ef525584 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b0a273a826a2c1ac1e2062c11d9eee48ef525584 # timeout=10
+Commit message: "Merge pull request #15 from aditya0774/maintenance-docs"
+ > git rev-list --no-walk b0a273a826a2c1ac1e2062c11d9eee48ef525584 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Test with Maven)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/LeBron Pipeline@2/apps/backend
+[Pipeline] {
+[Pipeline] sh
++ mvn -B clean test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.lemarketjames:le-market-james >------------------
+[INFO] Building LeMarketJames 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.4.1:clean (default-clean) @ le-market-james ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ le-market-james ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:compile (default-compile) @ le-market-james ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 10 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ le-market-james ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:testCompile (default-testCompile) @ le-market-james ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 8 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.5.3:test (default-test) @ le-market-james ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+============================================================
+  STARTING TEST SUITE
+============================================================
+[INFO] Running com.lemarketjames.GreeterTest
+------------------------------------------------------------
+STARTED  returnsExpectedGreeting()
+SUCCESSFUL  returnsExpectedGreeting()  (55ms)
+------------------------------------------------------------
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s -- in com.lemarketjames.GreeterTest
+[INFO] com.lemarketjames.GreeterTest.returnsExpectedGreeting -- Time elapsed: 0.054 s
+[INFO] Running com.lemarketjames.MainTest
+10:48:05.527 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.lemarketjames.MainTest]: MainTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:48:05.779 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.lemarketjames.Main for test class com.lemarketjames.MainTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.4)
+
+2026-09-04T10:48:07.244Z  INFO 13627 --- [           main] com.lemarketjames.MainTest               : Starting MainTest using Java 21.0.8 with PID 13627 (started by jenkins in /var/lib/jenkins/workspace/LeBron Pipeline@2/apps/backend)
+2026-09-04T10:48:07.246Z  INFO 13627 --- [           main] com.lemarketjames.MainTest               : No active profile set, falling back to 1 default profile: "default"
+2026-09-04T10:48:09.089Z  WARN 13627 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a0dca1d5-e256-465e-b046-618caa5e0b0a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-09-04T10:48:09.097Z  INFO 13627 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-04T10:48:09.534Z  INFO 13627 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-04T10:48:09.534Z  INFO 13627 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-04T10:48:09.537Z  INFO 13627 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-04T10:48:09.579Z  INFO 13627 --- [           main] com.lemarketjames.MainTest               : Started MainTest in 3.351 seconds (process running for 5.613)
+------------------------------------------------------------
+STARTED  greetingEndpointReturnsExpectedMessage()
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/var/lib/jenkins/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.6/byte-buddy-agent-1.17.6.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+SUCCESSFUL  greetingEndpointReturnsExpectedMessage()  (1180ms)
+------------------------------------------------------------
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.495 s -- in com.lemarketjames.MainTest
+[INFO] com.lemarketjames.MainTest.greetingEndpointReturnsExpectedMessage -- Time elapsed: 1.179 s
+[INFO] Running com.lemarketjames.auth.AuthControllerTest
+2026-09-04T10:48:10.809Z  INFO 13627 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.lemarketjames.auth.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-04T10:48:10.853Z  INFO 13627 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.lemarketjames.Main for test class com.lemarketjames.auth.AuthControllerTest
+------------------------------------------------------------
+STARTED  registerRejectsDuplicateEmail()
+2026-09-04T10:48:11.196Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=emailowner
+SUCCESSFUL  registerRejectsDuplicateEmail()  (464ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerRejectsWhenTermsNotAccepted()
+SUCCESSFUL  registerRejectsWhenTermsNotAccepted()  (51ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  passwordIsHashedWithSaltedHash()
+SUCCESSFUL  passwordIsHashedWithSaltedHash()  (200ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerRejectsDuplicateUsername()
+2026-09-04T10:48:11.677Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=duplicateuser
+SUCCESSFUL  registerRejectsDuplicateUsername()  (104ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerAndLoginEndpointsWork()
+2026-09-04T10:48:11.775Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=testuser
+2026-09-04T10:48:11.982Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login succeeded for username=testuser
+SUCCESSFUL  registerAndLoginEndpointsWork()  (424ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  loginCookieIsHardenedForSecureReturnVisits()
+2026-09-04T10:48:12.211Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=cookieuser
+2026-09-04T10:48:12.308Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login succeeded for username=cookieuser
+SUCCESSFUL  loginCookieIsHardenedForSecureReturnVisits()  (209ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  loginRejectsInvalidCredentials()
+2026-09-04T10:48:12.334Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=nobody
+SUCCESSFUL  loginRejectsInvalidCredentials()  (16ms)
+------------------------------------------------------------
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.539 s -- in com.lemarketjames.auth.AuthControllerTest
+[INFO] com.lemarketjames.auth.AuthControllerTest.registerRejectsDuplicateEmail -- Time elapsed: 0.462 s
+[INFO] com.lemarketjames.auth.AuthControllerTest.registerRejectsWhenTermsNotAccepted -- Time elapsed: 0.048 s
+[INFO] com.lemarketjames.auth.AuthControllerTest.passwordIsHashedWithSaltedHash -- Time elapsed: 0.198 s
+[INFO] com.lemarketjames.auth.AuthControllerTest.registerRejectsDuplicateUsername -- Time elapsed: 0.104 s
+[INFO] com.lemarketjames.auth.AuthControllerTest.registerAndLoginEndpointsWork -- Time elapsed: 0.423 s
+[INFO] com.lemarketjames.auth.AuthControllerTest.loginCookieIsHardenedForSecureReturnVisits -- Time elapsed: 0.208 s
+[INFO] com.lemarketjames.auth.AuthControllerTest.loginRejectsInvalidCredentials -- Time elapsed: 0.015 s
+[INFO] Running com.lemarketjames.auth.AuthServiceLoggingTest
+------------------------------------------------------------
+STARTED  successfulLoginIsLogged()
+2026-09-04T10:48:12.462Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+2026-09-04T10:48:12.547Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login succeeded for username=alice
+SUCCESSFUL  successfulLoginIsLogged()  (179ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  failedLoginIsLogged()
+2026-09-04T10:48:12.630Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+2026-09-04T10:48:12.708Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+SUCCESSFUL  failedLoginIsLogged()  (158ms)
+------------------------------------------------------------
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.346 s -- in com.lemarketjames.auth.AuthServiceLoggingTest
+[INFO] com.lemarketjames.auth.AuthServiceLoggingTest.successfulLoginIsLogged -- Time elapsed: 0.178 s
+[INFO] com.lemarketjames.auth.AuthServiceLoggingTest.failedLoginIsLogged -- Time elapsed: 0.157 s
+[INFO] Running com.lemarketjames.auth.AuthServiceTest
+------------------------------------------------------------
+STARTED  loginLocksAccountAfterThreeFailedAttempts()
+2026-09-04T10:48:12.793Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+2026-09-04T10:48:12.872Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+2026-09-04T10:48:12.950Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+2026-09-04T10:48:13.031Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+2026-09-04T10:48:13.031Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login blocked for username=alice due to active lockout
+SUCCESSFUL  loginLocksAccountAfterThreeFailedAttempts()  (320ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerRejectsDuplicateEmail()
+2026-09-04T10:48:13.129Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+SUCCESSFUL  registerRejectsDuplicateEmail()  (99ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerRejectsWhenTermsNotAccepted()
+SUCCESSFUL  registerRejectsWhenTermsNotAccepted()  (27ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerSucceedsWithValidRequest()
+2026-09-04T10:48:13.250Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+SUCCESSFUL  registerSucceedsWithValidRequest()  (90ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  passwordIsHashedAndVerifiable()
+SUCCESSFUL  passwordIsHashedAndVerifiable()  (161ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  loginSucceedsWithCorrectCredentials()
+2026-09-04T10:48:13.494Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+2026-09-04T10:48:13.575Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login succeeded for username=alice
+SUCCESSFUL  loginSucceedsWithCorrectCredentials()  (162ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerRejectsDuplicateUsername()
+2026-09-04T10:48:13.659Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+SUCCESSFUL  registerRejectsDuplicateUsername()  (83ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  loginRejectsUnknownUsername()
+2026-09-04T10:48:13.666Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=nobody
+SUCCESSFUL  loginRejectsUnknownUsername()  (6ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  loginRejectsIncorrectPassword()
+2026-09-04T10:48:13.755Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+2026-09-04T10:48:13.837Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+SUCCESSFUL  loginRejectsIncorrectPassword()  (167ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  loginSucceedsAfterLockoutExpires()
+2026-09-04T10:48:13.920Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Registration succeeded for username=alice
+2026-09-04T10:48:13.998Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+2026-09-04T10:48:14.077Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+2026-09-04T10:48:14.157Z  WARN 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login failed for username=alice
+2026-09-04T10:48:14.487Z  INFO 13627 --- [           main] com.lemarketjames.auth.AuthService       : Login succeeded for username=alice
+SUCCESSFUL  loginSucceedsAfterLockoutExpires()  (649ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerRejectsMissingInitialDeposit()
+SUCCESSFUL  registerRejectsMissingInitialDeposit()  (3ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  registerRejectsMissingRequiredField()
+SUCCESSFUL  registerRejectsMissingRequiredField()  (2ms)
+------------------------------------------------------------
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.782 s -- in com.lemarketjames.auth.AuthServiceTest
+[INFO] com.lemarketjames.auth.AuthServiceTest.loginLocksAccountAfterThreeFailedAttempts -- Time elapsed: 0.319 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.registerRejectsDuplicateEmail -- Time elapsed: 0.098 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.registerRejectsWhenTermsNotAccepted -- Time elapsed: 0.015 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.registerSucceedsWithValidRequest -- Time elapsed: 0.089 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.passwordIsHashedAndVerifiable -- Time elapsed: 0.161 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.loginSucceedsWithCorrectCredentials -- Time elapsed: 0.162 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.registerRejectsDuplicateUsername -- Time elapsed: 0.083 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.loginRejectsUnknownUsername -- Time elapsed: 0.005 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.loginRejectsIncorrectPassword -- Time elapsed: 0.167 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.loginSucceedsAfterLockoutExpires -- Time elapsed: 0.648 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.registerRejectsMissingInitialDeposit -- Time elapsed: 0.003 s
+[INFO] com.lemarketjames.auth.AuthServiceTest.registerRejectsMissingRequiredField -- Time elapsed: 0.001 s
+[INFO] Running com.lemarketjames.auth.security.JwtAuthenticationFilterTest
+------------------------------------------------------------
+STARTED  doesNotSetAuthenticationWhenTokenIsInvalid()
+SUCCESSFUL  doesNotSetAuthenticationWhenTokenIsInvalid()  (472ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  setsAuthenticationWhenCookieContainsValidToken()
+SUCCESSFUL  setsAuthenticationWhenCookieContainsValidToken()  (49ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  doesNotSetAuthenticationWhenCookieIsMissing()
+SUCCESSFUL  doesNotSetAuthenticationWhenCookieIsMissing()  (15ms)
+------------------------------------------------------------
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.545 s -- in com.lemarketjames.auth.security.JwtAuthenticationFilterTest
+[INFO] com.lemarketjames.auth.security.JwtAuthenticationFilterTest.doesNotSetAuthenticationWhenTokenIsInvalid -- Time elapsed: 0.468 s
+[INFO] com.lemarketjames.auth.security.JwtAuthenticationFilterTest.setsAuthenticationWhenCookieContainsValidToken -- Time elapsed: 0.042 s
+[INFO] com.lemarketjames.auth.security.JwtAuthenticationFilterTest.doesNotSetAuthenticationWhenCookieIsMissing -- Time elapsed: 0.008 s
+[INFO] Running com.lemarketjames.auth.security.JwtServiceTest
+------------------------------------------------------------
+STARTED  extractUsernameReturnsEmptyForExpiredToken()
+SUCCESSFUL  extractUsernameReturnsEmptyForExpiredToken()  (73ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  extractUsernameReturnsEmptyForTamperedToken()
+SUCCESSFUL  extractUsernameReturnsEmptyForTamperedToken()  (21ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  getExpirationSecondsConvertsMillisecondsToSeconds()
+SUCCESSFUL  getExpirationSecondsConvertsMillisecondsToSeconds()  (4ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  generateTokenProducesTokenWithMatchingSubject()
+SUCCESSFUL  generateTokenProducesTokenWithMatchingSubject()  (8ms)
+------------------------------------------------------------
+------------------------------------------------------------
+STARTED  extractUsernameReturnsEmptyForTokenSignedWithDifferentKey()
+SUCCESSFUL  extractUsernameReturnsEmptyForTokenSignedWithDifferentKey()  (37ms)
+------------------------------------------------------------
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 s -- in com.lemarketjames.auth.security.JwtServiceTest
+[INFO] com.lemarketjames.auth.security.JwtServiceTest.extractUsernameReturnsEmptyForExpiredToken -- Time elapsed: 0.072 s
+[INFO] com.lemarketjames.auth.security.JwtServiceTest.extractUsernameReturnsEmptyForTamperedToken -- Time elapsed: 0.009 s
+[INFO] com.lemarketjames.auth.security.JwtServiceTest.getExpirationSecondsConvertsMillisecondsToSeconds -- Time elapsed: 0.003 s
+[INFO] com.lemarketjames.auth.security.JwtServiceTest.generateTokenProducesTokenWithMatchingSubject -- Time elapsed: 0.004 s
+[INFO] com.lemarketjames.auth.security.JwtServiceTest.extractUsernameReturnsEmptyForTokenSignedWithDifferentKey -- Time elapsed: 0.033 s
+============================================================
+  TEST SUITE FINISHED
+============================================================
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.586 s
+[INFO] Finished at: 2026-09-04T10:48:15Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+Post stage
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Verify Docker Compose)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker compose version
++ command -v docker-compose
++ echo 'Using legacy docker-compose'
+Using legacy docker-compose
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Start application with Docker Compose)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker compose version
++ docker-compose up -d --build
+#0 building with "default" instance using docker driver
+
+#1 [backend internal] load build definition from Dockerfile
+#1 transferring dockerfile: 451B done
+#1 DONE 0.0s
+
+#2 [backend internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21
+#2 ...
+
+#3 [backend internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 0.5s
+
+#2 [backend internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21
+#2 DONE 0.5s
+
+#4 [backend internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [backend build 1/5] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#5 DONE 0.0s
+
+#6 [backend stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:974b08960c5d96694c780e65b2d5705268ab1e1ca1a0dd0caf4ba6c3fe34d699
+#6 DONE 0.0s
+
+#7 [backend internal] load build context
+#7 transferring context: 72.07kB 0.0s done
+#7 DONE 0.0s
+
+#8 [backend build 4/5] COPY src ./src
+#8 CACHED
+
+#9 [backend build 3/5] COPY pom.xml .
+#9 CACHED
+
+#10 [backend stage-1 3/4] COPY --from=build /app/target/le-market-james-0.0.1-SNAPSHOT.jar app.jar
+#10 CACHED
+
+#11 [backend stage-1 2/4] WORKDIR /app
+#11 CACHED
+
+#12 [backend build 5/5] RUN mvn -q package -DskipTests
+#12 CACHED
+
+#13 [backend build 2/5] WORKDIR /app
+#13 CACHED
+
+#14 [backend stage-1 4/4] RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+#14 CACHED
+
+#15 [backend] exporting to image
+#15 exporting layers done
+#15 writing image sha256:5ae569a51189f1bc4b16b205dbe6752cd83f26cb03e08a1430ff7b0b1f181f94 done
+#15 naming to docker.io/library/lebronpipeline2-backend done
+#15 DONE 0.0s
+
+#16 [backend] resolving provenance for metadata file
+#16 DONE 0.0s
+
+#17 [frontend internal] load build definition from Dockerfile
+#17 transferring dockerfile: 391B done
+#17 DONE 0.0s
+
+#18 [frontend internal] load metadata for docker.io/library/node:22-alpine
+#18 DONE 0.0s
+
+#19 [frontend internal] load metadata for docker.io/library/nginx:1.27-alpine
+#19 DONE 0.4s
+
+#20 [frontend internal] load .dockerignore
+#20 transferring context: 2B done
+#20 DONE 0.0s
+
+#21 [frontend build 1/6] FROM docker.io/library/node:22-alpine
+#21 DONE 0.0s
+
+#22 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#22 CACHED
+
+#23 [frontend internal] load build context
+#23 transferring context: 363.54kB 0.0s done
+#23 DONE 0.0s
+
+#24 [frontend build 2/6] WORKDIR /app
+#24 CACHED
+
+#25 [frontend build 3/6] COPY package.json package-lock.json ./
+#25 CACHED
+
+#26 [frontend build 4/6] RUN npm ci
+#26 5.653 npm warn deprecated angular@1.8.3: For the actively supported Angular, see https://www.npmjs.com/package/@angular/core. AngularJS support has officially ended. For extended AngularJS support options, see https://goo.gle/angularjs-path-forward.
+#26 11.73 
+#26 11.73 added 381 packages, and audited 382 packages in 11s
+#26 11.73 
+#26 11.73 113 packages are looking for funding
+#26 11.73   run `npm fund` for details
+#26 11.73 
+#26 11.73 1 high severity vulnerability
+#26 11.73 
+#26 11.73 Some issues need review, and may require choosing
+#26 11.73 a different dependency.
+#26 11.73 
+#26 11.73 Run `npm audit` for details.
+#26 11.74 npm notice
+#26 11.74 npm notice New major version of npm available! 10.9.8 -> 12.0.2
+#26 11.74 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+#26 11.74 npm notice To update run: npm install -g npm@12.0.2
+#26 11.74 npm notice
+#26 DONE 15.0s
+
+#27 [frontend build 5/6] COPY . .
+#27 DONE 0.0s
+
+#28 [frontend build 6/6] RUN npx ng build --configuration production
+#28 1.846 ❯ Building...
+#28 19.44 ✔ Building...
+#28 19.44 Initial chunk files | Names         | Raw size | Estimated transfer size
+#28 19.44 main-VXUKX2B7.js    | main          |  1.21 MB |               231.43 kB
+#28 19.44 styles-OPUTW5UJ.css | styles        |  8.04 kB |                 1.29 kB
+#28 19.44 
+#28 19.44                     | Initial total |  1.22 MB |               232.73 kB
+#28 19.44 
+#28 19.44 Application bundle generation complete. [17.589 seconds] - 2026-09-04T10:48:52.408Z
+#28 19.44 
+#28 19.44 ▲ [WARNING] bundle initial exceeded maximum budget. Budget 1.00 MB was not met by 218.74 kB with a total of 1.22 MB.
+#28 19.44 
+#28 19.44 
+#28 19.44 Output location: /app/dist/lemarket-ui
+#28 19.44 
+#28 DONE 19.7s
+
+#29 [frontend stage-1 2/3] COPY --from=build /app/dist/lemarket-ui/browser /usr/share/nginx/html
+#29 DONE 0.0s
+
+#30 [frontend stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf
+#30 DONE 0.0s
+
+#31 [frontend] exporting to image
+#31 exporting layers 0.0s done
+#31 writing image sha256:0752ac89311d0d5834a4772adc15c6d67df5cf861d59a4ffbdfc0f6d26d759b9 done
+#31 naming to docker.io/library/lebronpipeline2-frontend done
+#31 DONE 0.1s
+
+#32 [frontend] resolving provenance for metadata file
+#32 DONE 0.0s
+ Network lebronpipeline2_default  Creating
+ Network lebronpipeline2_default  Created
+ Volume "lebronpipeline2_db_data"  Creating
+ Volume "lebronpipeline2_db_data"  Created
+ Container lebronpipeline2-db-1  Creating
+ Container lebronpipeline2-db-1  Created
+ Container lebronpipeline2-backend-1  Creating
+ Container lebronpipeline2-backend-1  Created
+ Container lebronpipeline2-frontend-1  Creating
+ Container lebronpipeline2-frontend-1  Created
+ Container lebronpipeline2-db-1  Starting
+ Container lebronpipeline2-db-1  Started
+ Container lebronpipeline2-backend-1  Starting
+ Container lebronpipeline2-backend-1  Started
+ Container lebronpipeline2-frontend-1  Starting
+ Container lebronpipeline2-frontend-1  Started
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Verify PostgreSQL connection)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ echo 'PostgreSQL connection: host=db port=5432 database=paysprint user=paysprint'
+PostgreSQL connection: host=db port=5432 database=paysprint user=paysprint
++ docker compose version
+++ seq 1 30
++ for attempt in $(seq 1 30)
++ compose exec -T db pg_isready -U paysprint -d paysprint
++ sleep 1
++ for attempt in $(seq 1 30)
++ compose exec -T db pg_isready -U paysprint -d paysprint
++ echo 'PostgreSQL is accepting connections'
+PostgreSQL is accepting connections
++ exit 0
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run smoke test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ echo 'Container user and group:'
+Container user and group:
++ docker compose version
++ docker-compose exec -T backend id
+uid=100(appuser) gid=101(appgroup) groups=101(appgroup)
+++ curl --fail --silent --show-error --retry 15 --retry-all-errors --retry-delay 1 http://localhost:8081/
+curl: (56) Recv failure: Connection reset by peer
+curl: (56) Recv failure: Connection reset by peer
+curl: (56) Recv failure: Connection reset by peer
+curl: (56) Recv failure: Connection reset by peer
+curl: (56) Recv failure: Connection reset by peer
++ response='Hello from LeMarketJames!'
++ echo 'Spring Boot response: Hello from LeMarketJames!'
+Spring Boot response: Hello from LeMarketJames!
++ echo 'Hello from LeMarketJames!'
++ grep -F 'Hello from LeMarketJames!'
+Hello from LeMarketJames!
++ echo 'Spring Boot container logs:'
+Spring Boot container logs:
++ docker compose version
++ docker-compose logs backend
+backend-1  | 
+backend-1  |   .   ____          _            __ _ _
+backend-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+backend-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+backend-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+backend-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+backend-1  |  =========|_|==============|___/=/_/_/_/
+backend-1  | 
+backend-1  |  :: Spring Boot ::                (v3.5.4)
+backend-1  | 
+backend-1  | 2026-09-04T10:48:57.843Z  INFO 1 --- [           main] com.lemarketjames.Main                   : Starting Main v0.0.1-SNAPSHOT using Java 21.0.12 with PID 1 (/app/app.jar started by appuser in /app)
+backend-1  | 2026-09-04T10:48:57.861Z  INFO 1 --- [           main] com.lemarketjames.Main                   : No active profile set, falling back to 1 default profile: "default"
+backend-1  | 2026-09-04T10:49:00.690Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+backend-1  | 2026-09-04T10:49:00.722Z  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+backend-1  | 2026-09-04T10:49:00.723Z  INFO 1 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+backend-1  | 2026-09-04T10:49:00.794Z  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+backend-1  | 2026-09-04T10:49:00.796Z  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2751 ms
+backend-1  | 2026-09-04T10:49:01.458Z  WARN 1 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+backend-1  | 
+backend-1  | Using generated security password: 9d051664-6a0b-4ea1-96a7-48346d83de5d
+backend-1  | 
+backend-1  | This generated password is for development use only. Your security configuration must be updated before running your application in production.
+backend-1  | 
+backend-1  | 2026-09-04T10:49:01.469Z  INFO 1 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+backend-1  | 2026-09-04T10:49:01.956Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+backend-1  | 2026-09-04T10:49:02.008Z  INFO 1 --- [           main] com.lemarketjames.Main                   : Started Main in 5.677 seconds (process running for 7.917)
+backend-1  | 2026-09-04T10:49:02.818Z  INFO 1 --- [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+backend-1  | 2026-09-04T10:49:02.819Z  INFO 1 --- [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+backend-1  | 2026-09-04T10:49:02.821Z  INFO 1 --- [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] sh
++ docker compose version
++ command -v docker-compose
++ docker-compose down --rmi local --remove-orphans
+ Container lebronpipeline2-frontend-1  Stopping
+ Container lebronpipeline2-frontend-1  Stopped
+ Container lebronpipeline2-frontend-1  Removing
+ Container lebronpipeline2-frontend-1  Removed
+ Container lebronpipeline2-backend-1  Stopping
+ Container lebronpipeline2-backend-1  Stopped
+ Container lebronpipeline2-backend-1  Removing
+ Container lebronpipeline2-backend-1  Removed
+ Container lebronpipeline2-db-1  Stopping
+ Container lebronpipeline2-db-1  Stopped
+ Container lebronpipeline2-db-1  Removing
+ Container lebronpipeline2-db-1  Removed
+ Image lebronpipeline2-frontend:latest  Removing
+ Image lebronpipeline2-backend:latest  Removing
+ Network lebronpipeline2_default  Removing
+ Image lebronpipeline2-frontend:latest  Removed
+ Image lebronpipeline2-backend:latest  Removed
+ Network lebronpipeline2_default  Removed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
