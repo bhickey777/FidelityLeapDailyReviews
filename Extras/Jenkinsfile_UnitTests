@@ -1,0 +1,22 @@
+stage('Angular Unit Tests') {
+    steps {
+        dir('frontend') {
+            sh 'npx ng test --watch=false --browsers=ChromeHeadless'
+        }
+    }
+}
+
+stage('Java Unit Tests') {
+    steps {
+        dir('backend') {
+            sh 'mvn -B test'
+        }
+    }
+    post {
+        always {
+            junit 'backend/target/surefire-reports/*.xml'
+        }
+    }
+}
+
+
