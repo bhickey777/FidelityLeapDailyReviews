@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'Node 22'
+    }
+
+    stages {
+        stage('Check Node') {
+            steps {
+                sh 'node --version'
+                sh 'npm --version'
+            }
+        }
+
+        stage('Install') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+    }
+}
+
