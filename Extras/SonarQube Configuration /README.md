@@ -127,50 +127,39 @@ Navigate to:
 
 ``` text
 Manage Jenkins
-  → System
-  → SonarQube servers
+  → Tools
+  → SonarQube Scanner Installations
 ```
 
 Configure the server using the SonarQube URL provided by the instructor
-and select the `sonarqube-token` credential.
+and select the `sonarqube-token` credential. Name the scanner SonarScanner
 
 ## 6. Add SonarQube Analysis to the Jenkins Pipeline
 
 ### Generic SonarScanner Example
 
-Replace `team1-app` with your team's assigned SonarQube project key.
 
 ``` groovy
 stage('SonarQube Analysis') {
-    steps {
-        withSonarQubeEnv('SonarQube') {
-            sh '''
-                sonar-scanner \
-                  -Dsonar.projectKey=team1-app \
-                  -Dsonar.sources=.
-            '''
-        }
-    }
-}
+    		steps {
+        		script {
+            			def scannerHome = tool 'SonarScanner'
+
+            			withSonarQubeEnv('SonarQube') {
+                			sh """
+                    			echo "SonarScanner location:"
+                    			echo "${scannerHome}"
+
+						              ${scannerHome}/bin/sonar-scanner --version
+                    			${scannerHome}/bin/sonar-scanner
+                			"""
+            			}
+        		}
+    		}
+	  }
+
 ```
 
-### Maven / Spring Boot Example
-
-For a Maven-based Java/Spring Boot project:
-
-``` groovy
-stage('SonarQube Analysis') {
-    steps {
-        withSonarQubeEnv('SonarQube') {
-            sh '''
-                mvn clean verify \
-                  org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-                  -Dsonar.projectKey=team1-app
-            '''
-        }
-    }
-}
-```
 
 ## 7. Enforce the Quality Gate
 
@@ -209,7 +198,6 @@ sonarqube-config/
 │   └── typescript.xml
 ├── scripts/
 │   └── configure-sonarqube.sh
-└── docker-compose.yml
 ```
 
 The Quality Profiles can be imported into a compatible local SonarQube
