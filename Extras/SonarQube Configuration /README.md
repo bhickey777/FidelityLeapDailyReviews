@@ -118,20 +118,23 @@ Description: SonarQube Team Analysis Token
 The Jenkinsfile references the credential ID. The actual token should
 never appear in the Jenkinsfile.
 
-## 5. Configure the SonarQube Server in Jenkins
+## 5. Configure the SonarQube Scanner Plugin in Jenkins
 
 Your Jenkins environment must know how to connect to the classroom
 SonarQube server.
+
 
 Navigate to:
 
 ``` text
 Manage Jenkins
-  → Tools
-  → SonarQube Scanner Installations
+  → Configure System
+   →  From the Sonar Qube Section select 'Add SonarQube'
+   →  Update with IP address for where you are running sonar qube
+      using credentials you established earlier. 
 ```
 
-Configure the server using the SonarQube URL provided by the instructor
+When configuring the plugin, use the IP address for your Linux Box
 and select the `sonarqube-token` credential. Name the scanner SonarScanner
 
 ## 6. Add SonarQube Analysis to the Jenkins Pipeline
@@ -160,8 +163,14 @@ stage('SonarQube Analysis') {
 
 ```
 
+## 7. SonarQube WebHook Setup
+A WebHook is needed for Jenkins to communicate back to SonarQube concerning the Quality Gate
+completion. Go into the Administration menu for your SonarQube and add a WebHook with the following
+URL: http://host.docker.internal:8080/sonarqube-webhook/
 
-## 7. Enforce the Quality Gate
+This is assuming you are running sonarqube as a container under docker as demonstrated in class. Name the webhook Jenkins. 
+
+## 8. Enforce the Quality Gate
 
 The Jenkins pipeline should wait for SonarQube to evaluate the analysis.
 
@@ -178,7 +187,7 @@ stage('Quality Gate') {
 With `abortPipeline: true`, Jenkins stops the pipeline when the
 SonarQube Quality Gate fails.
 
-## 8. Local SonarQube Setup
+## 9. Local SonarQube Setup
 
 Students may run a local SonarQube environment to check their work
 before submitting it through the classroom Jenkins pipeline.
@@ -207,7 +216,7 @@ provided configuration/setup process.
 The instructor SonarQube environment remains the authoritative
 environment for validation and grading.
 
-## 9. What Will Be Validated
+## 10. What Will Be Validated
 
 The instructor will verify that:
 
@@ -219,7 +228,7 @@ The instructor will verify that:
 -   The Classroom Quality Gate is evaluated.
 -   A failed Quality Gate stops the pipeline when required.
 
-## 10. Before You Submit
+## 11. Before You Submit
 
 Confirm all of the following:
 
