@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><profile><name>texoma-docker-profile</name><language>docker</language><rules><rule><repositoryKey>docker</repositoryKey><key>S4507</key><type>VULNERABILITY</type><priority>MINOR</priority><impacts><impact><softwareQuality>SECURITY</softwareQuality><severity>LOW</severity></impact></impacts><parameters></parameters></rule></rules></profile>
