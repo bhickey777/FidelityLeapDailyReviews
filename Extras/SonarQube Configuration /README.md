@@ -137,10 +137,17 @@ Manage Jenkins
 When configuring the plugin, use the IP address for your Linux Box
 and select the `sonarqube-token` credential. Name the scanner SonarScanner
 
-## 6. Add SonarQube Analysis to the Jenkins Pipeline
+## 6. Update the sonar-project.properties file
+Make a copy of the sonar-project.properties file. It should be placed in the same
+directory as your jenkins file.
+
+Java Example
+sonar.coverage.jacoco.xmlReportPaths=\
+java-service/target/site/jacoco/jacoco.xml
+
+## 7. Add SonarQube Analysis to the Jenkins Pipeline
 
 ### Generic SonarScanner Example
-
 
 ``` groovy
 stage('SonarQube Analysis') {
@@ -163,14 +170,14 @@ stage('SonarQube Analysis') {
 
 ```
 
-## 7. SonarQube WebHook Setup
+## 8. SonarQube WebHook Setup
 A WebHook is needed for Jenkins to communicate back to SonarQube concerning the Quality Gate
 completion. Go into the Administration menu for your SonarQube and add a WebHook with the following
 URL: http://host.docker.internal:8080/sonarqube-webhook/
 
 This is assuming you are running sonarqube as a container under docker as demonstrated in class. Name the webhook Jenkins. 
 
-## 8. Enforce the Quality Gate
+## 9. Enforce the Quality Gate
 
 The Jenkins pipeline should wait for SonarQube to evaluate the analysis.
 
@@ -187,7 +194,7 @@ stage('Quality Gate') {
 With `abortPipeline: true`, Jenkins stops the pipeline when the
 SonarQube Quality Gate fails.
 
-## 9. Local SonarQube Setup
+## 10. Local SonarQube Setup
 
 Students may run a local SonarQube environment to check their work
 before submitting it through the classroom Jenkins pipeline.
@@ -216,7 +223,7 @@ provided configuration/setup process.
 The instructor SonarQube environment remains the authoritative
 environment for validation and grading.
 
-## 10. What Will Be Validated
+## 11. What Will Be Validated
 
 The instructor will verify that:
 
@@ -228,7 +235,7 @@ The instructor will verify that:
 -   The Classroom Quality Gate is evaluated.
 -   A failed Quality Gate stops the pipeline when required.
 
-## 11. Before You Submit
+## 12. Before You Submit
 
 Confirm all of the following:
 
